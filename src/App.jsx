@@ -5,7 +5,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import Movie from './components/movie.jsx'; // Importing the Movie component
 import PlayerCard from './components/playerCard.jsx';
-import playerPortraitImage from '/Users/klamerus/HOME/New App/making-something/src/assets/playerportrait.png';
+import playerPortraitImage from './assets/playerportrait.png';
 
 function App() {
   const playerData = {
