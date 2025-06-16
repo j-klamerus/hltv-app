@@ -1,20 +1,24 @@
 import React from 'react';
 
 async function getMovies() {
-    const url = 'http://localhost:3001/api/message';
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Movies fetched successfully:', data);
-        })
-        .catch(err => {
-            console.error('Error fetching movies:', err);
+    const url = '/api/data';
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+            cache: 'no-store',
         });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Data fetched successfully:', data);
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }     
 }
 
 const Movie = () => {
