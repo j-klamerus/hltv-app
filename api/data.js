@@ -29,14 +29,18 @@ let client;
 }
 
 export default async function handler(req, res) {
+  const {name} = req.query;
+  if (!name) {
+    return res.status(400).json({ error: 'Player ID is required' });
+  }
   try {
     const { db } = await connectToDatabase();
-    const collection = db.collection('george');
+    const collection = db.collection(name);
     // Fetch data from MongoDB
     // You can add queries, sorting, limiting here
     const data = await collection.find({})
                                  .sort({ timestamp: -1 }) // Sort by latest scraped data
-                                 .limit(20) // Limit to the most recent 100 items
+                                 .limit(20) 
                                  .toArray();
 
     res.status(200).json({ success: true, data });

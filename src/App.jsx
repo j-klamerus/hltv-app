@@ -3,30 +3,29 @@ import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import Movie from './components/movie.jsx'; // Importing the Movie component
 import PlayerCard from './components/playerCard.jsx';
-import playerPortraitImage from './assets/playerportrait.png';
+import defaultAvatar from './assets/avatar-default-svgrepo-com.svg'
 
 function App() {
   const [data, setData] = useState([])
   const [averageArray, setAverageArray] = useState([]);
   const playerData = {
-    portrait: playerPortraitImage, // Or a URL
-    name: 'LeBron James 🇮🇱',
-    teamName: 'Los Angeles Lakers',
-    age: 39,
+    portrait: defaultAvatar, // Or a URL
+    name: '',
+    teamName: '',
+    age: 0,
     stats: [
-      { name: 'Rating', value: 0, good: true },
-      { name: 'DPR', value: 0, good: true },
+      { name: 'Rating', value: 0, good: false },
+      { name: 'DPR', value: 0, good: false },
       { name: 'KDR', value: 0, good: false },
-      { name: 'HS%', value: 0, good: true },
+      { name: 'HS%', value: 0, good: false },
       { name: 'ADR', value: 0, good: false },
       { name: 'KPR', value: 0, good: false },
     ],
   };
 
-  async function getPlayer() {
-    const url = '/api/data';
+  async function getPlayer(playerName) {
+    const url = `/api/data/?name=${playerName}`;
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -40,13 +39,13 @@ function App() {
         }
         const result = await response.json();
         console.log('Data fetched successfully:', result.data);
-        getAverages(result.data);
+        getAverages(result.data, playerName);
         return response;
     } catch (error) {
         console.error('Error fetching data:', error);
     }     
 }
-function getAverages(data) {
+function getAverages(data, playerName) {
   //totals
   let totalRating = 0;
   let totalDeaths = 0;
@@ -99,8 +98,8 @@ function getAverages(data) {
 
   // Build the averages object in the same shape as playerData
   const averages = {
-    portrait: playerPortraitImage,
-    name: 'George Huot 🇮🇱',
+    portrait: `/hltv-app/${playerName}.png`,
+    name:  `${playerName} 🇺🇸`,
     teamName: 'FaZe Clan',
     age: '22',
     stats: [
@@ -118,7 +117,13 @@ function getAverages(data) {
     <>
       <div className="App">
       <PlayerCard player={averageArray.stats  ? averageArray : playerData}/>
-      <button onClick={getPlayer}>Fetch Player Data</button>
+      <button onClick={() => {getPlayer("jacob")}}>Jacob</button>
+      <button onClick={() => {getPlayer("george")}}>George</button>
+      <button onClick={() => {getPlayer("colton")}}>Colton</button>
+      <button onClick={() => {getPlayer("kyle")}}>Kyle</button>
+      <button onClick={() => {getPlayer("kaleb")}}>Kaleb</button>
+      <button onClick={() => {getPlayer("aidan")}}>Aidan</button>
+      <button onClick={() => {getPlayer("jucc")}}>Jack</button>
       {/* You can render multiple PlayerCards with different data */}
     </div>
     </>
