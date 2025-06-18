@@ -98,7 +98,7 @@ function getAverages(data, playerName) {
 
   // Build the averages object in the same shape as playerData
   const averages = {
-    portrait: `/hltv-app/${playerName}.png`,
+    portrait: `${playerName}.png`,
     name:  `${playerName} 🇺🇸`,
     teamName: 'FaZe Clan',
     age: '22',
