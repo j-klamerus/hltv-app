@@ -105,12 +105,48 @@ function getAverages(data, playerName) {
     stats: [
       { name: 'Rating', value: Number(finalrating.toFixed(2)), good: true },
       { name: 'DPR', value: Number(finalDPR.toFixed(2)), good: true },
-      { name: 'KDR', value: Number(finalKDR.toFixed(2)), good: false },
+      { name: 'KDR', value: finalKDR.toFixed(2), good: false },
       { name: 'HS%', value: Number(finalHSP.toFixed(2)), good: true },
       { name: 'ADR', value: Number(finalADR.toFixed(2)), good: false },
-      { name: 'KPR', value: Number(finalKPR.toFixed(2)), good: false }
+      { name: 'KPR', value: finalKPR.toFixed(2), good: false }
     ],
   };
+  if (finalrating > 1) {
+  averages.stats[0].good = true;
+} else {
+  averages.stats[0].good = false;
+}
+
+if (finalDPR < 0.67) {
+  averages.stats[1].good = true;
+} else {
+  averages.stats[1].good = false;
+}
+
+if (finalKDR > 1) {
+  averages.stats[2].good = true;
+} else {
+  averages.stats[2].good = false;
+}
+
+if (finalHSP > 60) {
+  averages.stats[3].good = true;
+} else {
+  averages.stats[3].good = false;
+}
+
+if (finalADR > 75) {
+  averages.stats[4].good = true;
+} else {
+  averages.stats[4].good = false;
+}
+
+if (finalKPR > 0.74) {
+  averages.stats[5].good = true;
+} else {
+  averages.stats[5].good = false;
+}
+  console.log(averages);
   setAverageArray(averages);
 }
   return (
