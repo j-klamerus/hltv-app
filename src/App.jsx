@@ -15,12 +15,12 @@ function App() {
     teamName: '',
     age: 0,
     stats: [
-      { name: 'Rating', value: 0, good: false },
-      { name: 'DPR', value: 0, good: false },
-      { name: 'KDR', value: 0, good: false },
-      { name: 'HS%', value: 0, good: false },
-      { name: 'ADR', value: 0, good: false },
-      { name: 'KPR', value: 0, good: false },
+      { name: 'Rating', value: 0, status: "bad" },
+      { name: 'DPR', value: 0, status: "bad" },
+      { name: 'KDR', value: 0, status: "bad" },
+      { name: 'HS%', value: 0, status: "bad" },
+      { name: 'ADR', value: 0, status: "bad" },
+      { name: 'KPR', value: 0, status: "bad" },
     ],
   };
 
@@ -103,48 +103,60 @@ function getAverages(data, playerName) {
     teamName: 'FaZe Clan',
     age: '22',
     stats: [
-      { name: 'Rating', value: Number(finalrating.toFixed(2)), good: true },
-      { name: 'DPR', value: Number(finalDPR.toFixed(2)), good: true },
-      { name: 'KDR', value: finalKDR.toFixed(2), good: false },
-      { name: 'HS%', value: Number(finalHSP.toFixed(2)), good: true },
-      { name: 'ADR', value: Number(finalADR.toFixed(2)), good: false },
-      { name: 'KPR', value: finalKPR.toFixed(2), good: false }
+      { name: 'Rating', value: Number(finalrating.toFixed(2)), status: "true" },
+      { name: 'DPR', value: Number(finalDPR.toFixed(2)), status: "true" },
+      { name: 'KDR', value: finalKDR.toFixed(2), status: "true" },
+      { name: 'HS%', value: Number(finalHSP.toFixed(2)), status: "true" },
+      { name: 'ADR', value: Number(finalADR.toFixed(2)), status: "true" },
+      { name: 'KPR', value: finalKPR.toFixed(2), status: "true" }
     ],
   };
-  if (finalrating > 1) {
-  averages.stats[0].good = true;
+  if (finalrating > 1.1) {
+  averages.stats[0].status = "good";
+} else if (finalrating > 1) {
+  averages.stats[0].status = "okay";
 } else {
-  averages.stats[0].good = false;
+  averages.stats[0].status = "bad";
 }
 
-if (finalDPR < 0.67) {
-  averages.stats[1].good = true;
+if (finalDPR < 0.66) {
+  averages.stats[1].status = "good";
+} else if (finalDPR < 0.71) {
+  averages.stats[1].status = "okay";
 } else {
-  averages.stats[1].good = false;
+  averages.stats[1].status = "bad";
 }
 
-if (finalKDR > 1) {
-  averages.stats[2].good = true;
+if (finalKDR > 1.1) {
+  averages.stats[2].status = "good";
+} else if (finalKDR > 0.99) {
+  averages.stats[2].status = "okay";
 } else {
-  averages.stats[2].good = false;
+  averages.stats[2].status = "bad";
 }
 
 if (finalHSP > 60) {
-  averages.stats[3].good = true;
+  averages.stats[3].status = "good";
+} else if (finalHSP > 50) {
+  averages.stats[3].status = "okay";
 } else {
-  averages.stats[3].good = false;
+  averages.stats[3].status = "bad";
 }
 
 if (finalADR > 75) {
-  averages.stats[4].good = true;
+  averages.stats[4].status = "good";
+} else if (finalADR > 65) {
+  averages.stats[4].status = "okay";
 } else {
-  averages.stats[4].good = false;
+  averages.stats[4].status = "bad";
 }
 
 if (finalKPR > 0.74) {
-  averages.stats[5].good = true;
+  averages.stats[5].status = "good";
+} else if (finalKPR > 0.65) {
+  averages.stats[5].status = "okay";
 } else {
-  averages.stats[5].good = false;
+  averages.stats[5].status = "bad";
 }
   console.log(averages);
   setAverageArray(averages);

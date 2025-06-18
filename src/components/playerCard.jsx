@@ -27,7 +27,8 @@ const PlayerCard = ({ player }) => {
               <p className="stat-name">{stat.name}</p>
               <p className="stat-value">{stat.value}</p>
               {/* The meter beneath the stat */}
-              <div className={`stat-meter ${stat.good ? 'good' : 'bad'}`}></div>
+              {/*<div className={`stat-meter ${stat.good ? 'good' : 'bad'}`}></div>*/}
+              <div className={`stat-meter ${stat.status}`}></div>
             </div>
           ))}
         </div>

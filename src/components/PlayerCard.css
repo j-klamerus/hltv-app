@@ -93,3 +93,6 @@
 .stat-meter.bad {
   background-color: #F44336; /* Red for bad */
 }
+.stat-meter.okay {
+  background-color: #ffb000;
+}
