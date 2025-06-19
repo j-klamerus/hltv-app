@@ -158,6 +158,17 @@ if (finalKPR > 0.74) {
 } else {
   averages.stats[5].status = "bad";
 }
+switch(playerName) {
+  case "jacob" || "george" || "aidan" || "jucc":
+    averages.age = 22
+    break;
+  case "colton" || "kaleb":
+    averages.age = 23
+    break;
+  case "kyle":
+    averages.age = 24
+    break;
+}
   console.log(averages);
   setAverageArray(averages);
 }
