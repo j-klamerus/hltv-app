@@ -159,10 +159,14 @@ if (finalKPR > 0.74) {
   averages.stats[5].status = "bad";
 }
 switch(playerName) {
-  case "jacob" || "george" || "aidan" || "jucc":
+  case "jacob":
+  case "george":
+  case"aidan":
+  case "jucc":
     averages.age = 22
     break;
-  case "colton" || "kaleb":
+  case "colton":
+  case "kaleb":
     averages.age = 23
     break;
   case "kyle":
