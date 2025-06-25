@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     // Fetch data from MongoDB
     // You can add queries, sorting, limiting here
     const data = await collection.find({})
-                                 .sort({ timestamp: -1 }) // Sort by latest scraped data
+                                 .sort({ _id: -1 }) // Sort by latest scraped data
                                  .limit(20) 
                                  .toArray();
 
