@@ -14,6 +14,7 @@ function App() {
   const playerData = {
     portrait: defaultAvatar, 
     name: '',
+    ign: '',
     teamName: '',
     age: 0,
     stats: [
@@ -50,6 +51,7 @@ function App() {
     }     
 }
 function getAverages(data, playerName) {
+  let imageName = playerName;
   //totals
   let totalRating = 0;
   let totalDeaths = 0;
@@ -102,7 +104,7 @@ function getAverages(data, playerName) {
 
   // make averges object
   const averages = {
-    portrait: `${playerName}.png`,
+    portrait: `${imageName}.png`,
     name:  `${playerName} 🇺🇸`,
     teamName: 'FaZe Clan',
     age: '22',
@@ -164,16 +166,38 @@ if (finalKPR > 0.74) {
 }
 switch(playerName) {
   case "jacob":
+    averages.ign = "hendon hooker"
+    averages.name = "Jacob Klamerus 🇺🇸"
+    averages.age = 22
+    break
   case "george":
+    averages.ign = "who"
+    averages.name = "George Huot 🇮🇱"
+    averages.age = 22
+    break
   case"aidan":
+    averages.ign = "wowbugasshair"
+    averages.name = "Aidan Juengel 🇺🇸"
+    averages.age = 22
+    break
   case "jucc":
+    averages.ign = "JuccOP"
+    averages.name = "Jack Cetlinski 🇺🇸"
     averages.age = 22
     break;
   case "colton":
+    averages.ign = "Beerusoomafoo"
+    averages.name = "Colton Terrian 🇺🇸"
+    averages.age = 23
+    break;
   case "kaleb":
+    averages.ign = "kaleB"
+    averages.name = "Kaleb Bailey 🇺🇸"
     averages.age = 23
     break;
   case "kyle":
+    averages.ign = "Toaster"
+    averages.name = "Kyle Lewis 🇺🇸"
     averages.age = 24
     break;
 }

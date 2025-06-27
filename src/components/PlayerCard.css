@@ -6,7 +6,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px; /* Adjust as needed */
   margin: 20px;
-  background-color: #fff;
+  background-color: #414141;
 }
 
 .player-portrait-container {
@@ -40,13 +40,13 @@
 .player-name {
   font-size: 1.8em;
   margin: 0 0 5px 0;
-  color: #333;
+  color: #ffffff;
 }
 
 .player-team,
 .player-age {
   font-size: 0.9em;
-  color: #666;
+  color: #a8a8a8;
   margin: 0 0 3px 0;
 }
 
@@ -60,21 +60,21 @@
 .stat-item {
   text-align: center;
   padding: 10px;
-  background-color: #f9f9f9;
+  /*background-color: #f9f9f9;*/
   border-radius: 5px;
-  border: 1px solid #eee;
+  /*border: 1px solid #eee;*/
 }
 
 .stat-name {
   font-size: 0.8em;
-  color: #777;
+  color: #ffffff;
   margin-bottom: 5px;
 }
 
 .stat-value {
   font-size: 1.3em;
   font-weight: bold;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 8px;
 }
 

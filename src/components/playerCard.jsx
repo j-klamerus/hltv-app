@@ -5,6 +5,7 @@ const PlayerCard = ({ player }) => {
   const {
     portrait,
     name,
+    ign,
     teamName,
     age,
     stats // This should be an array of objects, e.g., [{ name: 'Points', value: 25, good: true }, ...]
@@ -17,7 +18,8 @@ const PlayerCard = ({ player }) => {
       </div>
       <div className="player-info-and-stats">
         <div className="player-info">
-          <h2 className="player-name">{name}</h2>
+          <h2 className="player-name">{ign}</h2>
+          <p className="player-team">{name}</p>
           <p className="player-team">{teamName}</p>
           <p className="player-age">Age: {age}</p>
         </div>
