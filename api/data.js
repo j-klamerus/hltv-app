@@ -1,9 +1,7 @@
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 
-// Cache the MongoDB client connection in the global scope
-// This is crucial for performance and avoiding hitting connection limits
 let cachedClient = null;
 let cachedDb = null;
 
@@ -19,12 +17,13 @@ let client;
         client = new MongoClient(process.env.MONGODB_URI);
         await client.connect();
         cachedClient = client;
-        cachedDb = client.db('your_database_name'); // REPLACE with your database name
+        //testing db name
+        cachedDb = client.db('your_database_name');
         console.log('Connected to MongoDB');
         return { client: cachedClient, db: cachedDb };
     } catch (error) {
     console.error('Failed to connect to MongoDB:', error);
-    throw error; // Re-throw to be caught by the main handler
+    throw error;
   }
 }
 
@@ -37,9 +36,8 @@ export default async function handler(req, res) {
     const { db } = await connectToDatabase();
     const collection = db.collection(name);
     // Fetch data from MongoDB
-    // You can add queries, sorting, limiting here
     const data = await collection.find({})
-                                 .sort({ _id: -1 }) // Sort by latest scraped data
+                                 .sort({ _id: -1 }) // sort by id to find latest entries
                                  .limit(20) 
                                  .toArray();
 

@@ -5,12 +5,14 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import PlayerCard from './components/playerCard.jsx';
 import defaultAvatar from './assets/avatar-default-svgrepo-com.svg'
+import Loading from './components/Loading.jsx';
 
 function App() {
   const [data, setData] = useState([])
   const [averageArray, setAverageArray] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const playerData = {
-    portrait: defaultAvatar, // Or a URL
+    portrait: defaultAvatar, 
     name: '',
     teamName: '',
     age: 0,
@@ -25,6 +27,7 @@ function App() {
   };
 
   async function getPlayer(playerName) {
+    setIsLoading(true);
     const url = `/api/data/?name=${playerName}`;
     try {
         const response = await fetch(url, {
@@ -40,6 +43,7 @@ function App() {
         const result = await response.json();
         console.log('Data fetched successfully:', result.data);
         getAverages(result.data, playerName);
+        setIsLoading(false);
         return response;
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -96,7 +100,7 @@ function getAverages(data, playerName) {
   console.log(`Average ADR: ${finalADR.toFixed(2)}`);
   console.log(`Average KPR: ${finalKPR.toFixed(2)}`);
 
-  // Build the averages object in the same shape as playerData
+  // make averges object
   const averages = {
     portrait: `${playerName}.png`,
     name:  `${playerName} 🇺🇸`,
@@ -179,6 +183,9 @@ switch(playerName) {
   return (
     <>
       <div className="App">
+      <>
+        {isLoading ? <Loading/> : null}
+      </>
       <PlayerCard player={averageArray.stats  ? averageArray : playerData}/>
       <button onClick={() => {getPlayer("jacob")}}>Jacob</button>
       <button onClick={() => {getPlayer("george")}}>George</button>
@@ -187,7 +194,6 @@ switch(playerName) {
       <button onClick={() => {getPlayer("kaleb")}}>Kaleb</button>
       <button onClick={() => {getPlayer("aidan")}}>Aidan</button>
       <button onClick={() => {getPlayer("jucc")}}>Jack</button>
-      {/* You can render multiple PlayerCards with different data */}
     </div>
     </>
   );
