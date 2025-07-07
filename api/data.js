@@ -35,7 +35,7 @@ export default async function handler(req, res) {
   try {
     const { db } = await connectToDatabase();
     const collection = db.collection(name);
-    // Fetch data from MongoDB
+    // get data from mongodb
     const data = await collection.find({})
                                  .sort({ _id: -1 }) // sort by id to find latest entries
                                  .limit(20) 

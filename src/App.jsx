@@ -1,14 +1,12 @@
 // my-react-app/src/App.jsx
 import { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import PlayerCard from './components/playerCard.jsx';
 import defaultAvatar from './assets/avatar-default-svgrepo-com.svg'
 import Loading from './components/Loading.jsx';
 
 function App() {
-  const [data, setData] = useState([])
+  //const [data, setData] = useState([])
   const [averageArray, setAverageArray] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const playerData = {
